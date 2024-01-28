@@ -1,28 +1,21 @@
 ---
+import Main from '../layouts/Main.astro';
+
 const profilePicture = "https://i.imgur.com/JPGFE75.jpg";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<section class="profile">
-			<img alt="Frau Katerina's website" class="profile__picture" width="100px" height="100px" src={profilePicture} />
-			<div class="profile__details">
-				<h1>Frau Katerina</h1>
-				<h2>VP of Engineering at Gooogle</h2>
-				<p>
-					Helping developers be excellent and suceed at building scalable products.
-				</p>
-			</div>
-		</section>
-	</body>
-</html>
+<Main>
+	<section class="profile">
+		<img alt="Frau Katerina's website" class="profile__picture" width="100px" height="100px" src={profilePicture} />
+		<div class="profile__details">
+			<h1>Frau Katerina</h1>
+			<h2>VP of Engineering at Gooogle</h2>
+			<p>
+				Helping developers be excellent and suceed at building scalable products.
+			</p>
+		</div>
+	</section>
+</Main>
 
 <style>
 	.profile {
