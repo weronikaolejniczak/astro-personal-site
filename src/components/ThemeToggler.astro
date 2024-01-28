@@ -42,3 +42,16 @@
     fill: transparent;
   }
 </style>
+
+<script>
+  const DARK_THEME_CLASS = "dark";
+
+  const toggle = document.querySelector("button");
+  const root = document.documentElement;
+
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      root.classList.toggle(DARK_THEME_CLASS)
+    });
+  }
+</script>
