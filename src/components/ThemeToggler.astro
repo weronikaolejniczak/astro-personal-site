@@ -45,13 +45,37 @@
 
 <script>
   const DARK_THEME_CLASS = "dark";
+  const COLOUR_MODE_KEY = "COLOUR_MODE";
+  const LIGHT_THEME = "LIGHT";
+  const DARK_THEME = "DARK";
 
   const toggle = document.querySelector("button");
   const root = document.documentElement;
 
+  const getInitialColourMode = () => {
+    const colourMode = window.localStorage.getItem(COLOUR_MODE_KEY);
+
+    if (colourMode) return colourMode;
+    else if (window.matchMedia("(prefers-color-schema: dark)").matches) return DARK_THEME;
+    else return LIGHT_THEME;
+  };
+
+  const initialColourMode = getInitialColourMode();
+
+  const setInitialColourMode = (mode: string) => {
+    if (mode === LIGHT_THEME) root.classList.remove(DARK_THEME_CLASS);
+    else root.classList.add(DARK_THEME_CLASS);
+  }
+
+  setInitialColourMode(initialColourMode);
+
   if (toggle) {
     toggle.addEventListener("click", () => {
-      root.classList.toggle(DARK_THEME_CLASS)
+      root.classList.toggle(DARK_THEME_CLASS);
+
+      const colourMode = root.classList.contains(DARK_THEME_CLASS) ? DARK_THEME : LIGHT_THEME;
+
+      window.localStorage.setItem(COLOUR_MODE_KEY, colourMode);
     });
   }
 </script>
